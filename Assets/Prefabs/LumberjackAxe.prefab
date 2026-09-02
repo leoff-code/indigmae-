@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7953064603693421769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4702972491422482603}
+  m_Layer: 0
+  m_Name: LumberjackAxe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4702972491422482603
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7953064603693421769}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7647040221716871384}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8899401203662799390
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5279256711539311641}
+  m_Layer: 0
+  m_Name: Hand Contact
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5279256711539311641
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8899401203662799390}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.000000046100467, y: -0.3699345, z: -0.0052021686}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7647040221716871384}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &7642091372953021196
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4702972491422482603}
+    m_Modifications:
+    - target: {fileID: 1989290484677718, guid: 9231c6098ef019a448d155a9de1fa3f9, type: 3}
+      propertyPath: m_Name
+      value: Carpentry Axe
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951160578364372, guid: 9231c6098ef019a448d155a9de1fa3f9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951160578364372, guid: 9231c6098ef019a448d155a9de1fa3f9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951160578364372, guid: 9231c6098ef019a448d155a9de1fa3f9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951160578364372, guid: 9231c6098ef019a448d155a9de1fa3f9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.013005423
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951160578364372, guid: 9231c6098ef019a448d155a9de1fa3f9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9248363
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951160578364372, guid: 9231c6098ef019a448d155a9de1fa3f9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00000011680155
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951160578364372, guid: 9231c6098ef019a448d155a9de1fa3f9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951160578364372, guid: 9231c6098ef019a448d155a9de1fa3f9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951160578364372, guid: 9231c6098ef019a448d155a9de1fa3f9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951160578364372, guid: 9231c6098ef019a448d155a9de1fa3f9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951160578364372, guid: 9231c6098ef019a448d155a9de1fa3f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951160578364372, guid: 9231c6098ef019a448d155a9de1fa3f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951160578364372, guid: 9231c6098ef019a448d155a9de1fa3f9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 321585426084038415, guid: 9231c6098ef019a448d155a9de1fa3f9, type: 3}
+    - {fileID: 8581666681946965182, guid: 9231c6098ef019a448d155a9de1fa3f9, type: 3}
+    - {fileID: -7248855739338678399, guid: 9231c6098ef019a448d155a9de1fa3f9, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4951160578364372, guid: 9231c6098ef019a448d155a9de1fa3f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5279256711539311641}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9231c6098ef019a448d155a9de1fa3f9, type: 3}
+--- !u!4 &7647040221716871384 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4951160578364372, guid: 9231c6098ef019a448d155a9de1fa3f9, type: 3}
+  m_PrefabInstance: {fileID: 7642091372953021196}
+  m_PrefabAsset: {fileID: 0}

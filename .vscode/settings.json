@@ -1,0 +1,14 @@
+{
+    "files.exclude": {
+        "**/.DS_Store": true,
+        "**/Library": true,
+        "**/Logs": true,
+        "**/Temp": true
+    },
+    "files.watcherExclude": {
+        "**/Library/**": true,
+        "**/Logs/**": true,
+        "**/Temp/**": true
+    },
+    "dotnet.defaultSolution": "Unity.slnx"
+}

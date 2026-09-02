@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7915347495610056651
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3696234139561092251, guid: 522389bed44c5a940b0a500e6cf29d90, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696234139561092251, guid: 522389bed44c5a940b0a500e6cf29d90, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696234139561092251, guid: 522389bed44c5a940b0a500e6cf29d90, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696234139561092251, guid: 522389bed44c5a940b0a500e6cf29d90, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696234139561092251, guid: 522389bed44c5a940b0a500e6cf29d90, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696234139561092251, guid: 522389bed44c5a940b0a500e6cf29d90, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696234139561092251, guid: 522389bed44c5a940b0a500e6cf29d90, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696234139561092251, guid: 522389bed44c5a940b0a500e6cf29d90, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696234139561092251, guid: 522389bed44c5a940b0a500e6cf29d90, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3696234139561092251, guid: 522389bed44c5a940b0a500e6cf29d90, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226712661716279294, guid: 522389bed44c5a940b0a500e6cf29d90, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b431967058d33a545b0f28bb05789a14, type: 2}
+    - target: {fileID: 4226712661716279294, guid: 522389bed44c5a940b0a500e6cf29d90, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 431a8325be17d0f44b83430aae710c1a, type: 2}
+    - target: {fileID: 6199162400634424545, guid: 522389bed44c5a940b0a500e6cf29d90, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6199162400634424545, guid: 522389bed44c5a940b0a500e6cf29d90, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6199162400634424545, guid: 522389bed44c5a940b0a500e6cf29d90, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0.018
+      objectReference: {fileID: 0}
+    - target: {fileID: 7204330015767125457, guid: 522389bed44c5a940b0a500e6cf29d90, type: 3}
+      propertyPath: m_Name
+      value: Forest_Bush_D
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7204330015767125457, guid: 522389bed44c5a940b0a500e6cf29d90, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3522078890641994135}
+  m_SourcePrefab: {fileID: 100100000, guid: 522389bed44c5a940b0a500e6cf29d90, type: 3}
+--- !u!1 &1018408792077279770 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7204330015767125457, guid: 522389bed44c5a940b0a500e6cf29d90, type: 3}
+  m_PrefabInstance: {fileID: 7915347495610056651}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3522078890641994135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018408792077279770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7855b36562fa644bbf4dad33502c399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: CrystalSprint.Runtime::CrystalSprint.EnvironmentAssetInstance
+  kind: 7
+  sourcePrefab: Assets/Vegetation_Stylized_Pack_ByLuxArtStudios/Prefabs/Bushes/S_Bush_D.prefab
+  groundContact: {x: 0, y: 0, z: 0}

@@ -1,0 +1,9 @@
+{
+  "name": "CrystalSprint.Runtime",
+  "rootNamespace": "CrystalSprint",
+  "references": [
+    "Unity.InputSystem",
+    "Unity.ugui"
+  ],
+  "autoReferenced": true
+}
