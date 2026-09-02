@@ -63,7 +63,8 @@ namespace CrystalSprintEditor
             Material woodCut = CreateMaterial("WoodCut", new Color(0.78f, 0.52f, 0.25f), 0f, 0.34f, false, cutTexture, Vector2.one);
             Material skin = CreateMaterial("Lumberjack_Skin", new Color(0.92f, 0.61f, 0.42f), 0f, 0.52f);
             Material beard = CreateMaterial("Lumberjack_Beard", new Color(0.24f, 0.075f, 0.025f), 0f, 0.28f);
-            Material shirt = CreateMaterial("Lumberjack_Shirt", new Color(0.68f, 0.055f, 0.035f), 0f, 0.32f);
+            Material shirt = CreateMaterial("Lumberjack_Shirt", new Color(0.035f, 0.18f, 0.68f), 0f, 0.32f);
+            Material hat = CreateMaterial("Lumberjack_Hat", new Color(0.035f, 0.18f, 0.68f), 0f, 0.32f);
             Material denim = CreateMaterial("Lumberjack_Denim", new Color(0.055f, 0.16f, 0.3f), 0f, 0.3f);
             Material leather = CreateMaterial("Lumberjack_Leather", new Color(0.11f, 0.045f, 0.02f), 0f, 0.35f);
             Material charcoal = CreateMaterial("Lumberjack_Charcoal", new Color(0.018f, 0.018f, 0.015f), 0f, 0.5f);
@@ -92,7 +93,7 @@ namespace CrystalSprintEditor
             GameObject smallRockPrefab = CreateSmallRockPrefab(rock, rockLight);
             GameObject axePrefab = CreateAxePrefab(woodBark, axeSteel, axeEdge);
             Texture2D axeIcon = CreateAxeIcon();
-            GameObject lumberjackPrefab = CreateLumberjackPrefab(skin, beard, shirt, denim, leather, charcoal, eyeWhite, movementParticles, axePrefab);
+            GameObject lumberjackPrefab = CreateLumberjackPrefab(skin, beard, shirt, hat, denim, leather, charcoal, eyeWhite, movementParticles, axePrefab);
             GameObject[] fishPrefabs =
             {
                 CreateFishPrefab("Fish_Trout", fishSilver, fishFin, eyeWhite, charcoal, 0),
@@ -749,6 +750,7 @@ namespace CrystalSprintEditor
             Material skin,
             Material beard,
             Material shirt,
+            Material hat,
             Material denim,
             Material leather,
             Material charcoal,
@@ -822,8 +824,8 @@ namespace CrystalSprintEditor
             CreateRoundedPart("Right Eyebrow", headRig.transform, PrimitiveType.Sphere, new Vector3(0.16f, 0.04f, 0.025f), new Vector3(0.12f, 0.19f, 0.27f), Quaternion.Euler(0f, 0f, 8f), beard);
             CreateRoundedPart("Left Moustache", headRig.transform, PrimitiveType.Sphere, new Vector3(0.19f, 0.08f, 0.08f), new Vector3(-0.08f, -0.06f, 0.29f), Quaternion.Euler(0f, 0f, -12f), beard);
             CreateRoundedPart("Right Moustache", headRig.transform, PrimitiveType.Sphere, new Vector3(0.19f, 0.08f, 0.08f), new Vector3(0.08f, -0.06f, 0.29f), Quaternion.Euler(0f, 0f, 12f), beard);
-            CreateRoundedPart("Hat Brim", headRig.transform, PrimitiveType.Cylinder, new Vector3(0.75f, 0.045f, 0.7f), new Vector3(0f, 0.3f, 0f), Quaternion.identity, shirt);
-            CreateRoundedPart("Hat Crown", headRig.transform, PrimitiveType.Capsule, new Vector3(0.5f, 0.18f, 0.46f), new Vector3(0f, 0.43f, -0.015f), Quaternion.identity, shirt);
+            CreateRoundedPart("Hat Brim", headRig.transform, PrimitiveType.Cylinder, new Vector3(0.75f, 0.045f, 0.7f), new Vector3(0f, 0.3f, 0f), Quaternion.identity, hat);
+            CreateRoundedPart("Hat Crown", headRig.transform, PrimitiveType.Capsule, new Vector3(0.5f, 0.18f, 0.46f), new Vector3(0f, 0.43f, -0.015f), Quaternion.identity, hat);
             CreateRoundedPart("Hat Band", headRig.transform, PrimitiveType.Cylinder, new Vector3(0.52f, 0.035f, 0.48f), new Vector3(0f, 0.31f, -0.01f), Quaternion.identity, leather);
 
             LumberjackVisual animation = source.AddComponent<LumberjackVisual>();
