@@ -28,9 +28,9 @@ namespace CrystalSprintTests
             PlayerController player = Object.FindAnyObjectByType<PlayerController>();
             Assert.That(player, Is.Not.Null);
             Assert.That(Object.FindAnyObjectByType<ThirdPersonCamera>(), Is.Not.Null);
-            GameObject boundary = GameObject.Find("Mountain Boundary");
-            Assert.That(boundary, Is.Not.Null);
-            Assert.That(boundary.GetComponentInChildren<MeshCollider>(), Is.Not.Null);
+            Assert.That(GameObject.Find("Mountain Boundary"), Is.Null);
+            Assert.That(Object.FindAnyObjectByType<IslandCoast>(), Is.Not.Null);
+            Assert.That(GameObject.Find("Connected Beach and Seabed").GetComponent<MeshCollider>(), Is.Not.Null);
             GameObject trees = GameObject.Find("Trees");
             Assert.That(trees, Is.Not.Null);
             Assert.That(trees.transform.childCount, Is.EqualTo(ForestWorld.TreeCount));
@@ -42,8 +42,8 @@ namespace CrystalSprintTests
             Assert.That(ground.GetComponent<SurfaceMarker>().Type, Is.EqualTo(SurfaceType.Grass));
             GameObject grass = GameObject.Find("Interactive Grass Field");
             Assert.That(grass, Is.Not.Null);
-            Assert.That(grass.GetComponent<InstancedForestGrass>().InstanceCount, Is.GreaterThan(24000));
-            Assert.That(GameObject.Find("Meadow Rock Transition").GetComponent<Renderer>().sharedMaterial.shader.name, Is.EqualTo("CrystalSprint/TerrainBlend"));
+            Assert.That(grass.GetComponent<InstancedForestGrass>().InstanceCount, Is.GreaterThan(22000));
+            Assert.That(ground.GetComponent<Renderer>().sharedMaterials[1].shader.name, Is.EqualTo("CrystalSprint/Island Shore URP"));
             GameObject pond = GameObject.Find("Central Pond");
             Assert.That(pond, Is.Not.Null);
             Transform water = pond.transform.Find("Animated Water Surface");
@@ -160,7 +160,8 @@ namespace CrystalSprintTests
             Assert.That(GameObject.Find("Inventory Slot 1").GetComponentInChildren<RawImage>().texture, Is.Not.Null);
             for (int slot = 2; slot <= 4; slot++)
             {
-                Assert.That(GameObject.Find($"Inventory Slot {slot}").GetComponentInChildren<RawImage>(), Is.Null, $"Slot {slot} should be empty.");
+                Assert.That(equipment.HasWood(slot-1), Is.False, $"Slot {slot} should start empty.");
+                Assert.That(GameObject.Find($"Inventory Slot {slot}").GetComponentsInChildren<RawImage>().All(icon=>!icon.enabled), Is.True);
             }
 
             equipment.SelectSlot(2);
@@ -291,7 +292,7 @@ namespace CrystalSprintTests
             PlayerController player = Object.FindAnyObjectByType<PlayerController>();
             Transform obstacleGroup = GameObject.Find("Obstacles").transform.GetChild(0);
             Assert.That(obstacleGroup.GetComponent<BoxCollider>(), Is.Null, "The obsolete invisible group collider still exists.");
-            Assert.That(GameObject.Find("Continuous Mountain Terrain").GetComponent<SurfaceMarker>().Type, Is.EqualTo(SurfaceType.Stone));
+            Assert.That(GameObject.Find("Continuous Mountain Terrain"), Is.Null);
             EnvironmentAssetInstance[] stumps = Object.FindObjectsByType<EnvironmentAssetInstance>(FindObjectsSortMode.None)
                 .Where(item => item.Kind == EnvironmentAssetKind.Stump).ToArray();
             Assert.That(stumps.Length, Is.EqualTo(13));

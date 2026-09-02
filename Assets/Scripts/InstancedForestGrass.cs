@@ -25,6 +25,10 @@ namespace CrystalSprint
         public Mesh[] SourceMeshes => meshes;
 
         public void SetLocalClearings(Bounds[] regions) { localClearings = regions; Rebuild(); }
+        public void AddLocalClearings(Bounds[] regions)
+        {
+            var combined=new List<Bounds>(localClearings??Array.Empty<Bounds>());combined.AddRange(regions);SetLocalClearings(combined.ToArray());
+        }
 
         public bool IsInLocalClearing(Vector3 position)
         {
@@ -135,6 +139,21 @@ namespace CrystalSprint
                         var kept = new List<Matrix4x4>();
                         foreach (Matrix4x4 matrix in cell.variants[variant])
                             if (!IsInLocalClearing(matrix.GetColumn(3))) kept.Add(matrix);
+                        InstanceCount -= cell.variants[variant].Length - kept.Count;
+                        cell.variants[variant] = kept.ToArray();
+                    }
+            if (FindAnyObjectByType<IslandCoast>() != null)
+                foreach (Cell cell in cells)
+                    for (int variant = 0; variant < cell.variants.Length; variant++)
+                    {
+                        var kept = new List<Matrix4x4>();
+                        foreach (var matrix in cell.variants[variant])
+                        {
+                            Vector3 p = matrix.GetColumn(3);
+                            float density = 1f - Mathf.SmoothStep(0f, 1f, Mathf.InverseLerp(54.5f, 58.1f, new Vector2(p.x,p.z).magnitude));
+                            float hash = Mathf.Repeat(Mathf.Sin(p.x*12.9898f+p.z*78.233f)*43758.5453f,1f);
+                            if (density >= 1f || hash < density) kept.Add(matrix);
+                        }
                         InstanceCount -= cell.variants[variant].Length - kept.Count;
                         cell.variants[variant] = kept.ToArray();
                     }

@@ -15,19 +15,20 @@ namespace CrystalSprint
         private readonly InputAction selectSlot;
         private readonly InputAction interact;
 
-        public Vector2 Move => move.ReadValue<Vector2>();
-        public Vector2 Look => look.ReadValue<Vector2>();
+        private static bool Gameplay => !MusicMenu.IsOpen && !MusicMenu.JustClosed && Time.timeScale > 0f;
+        public Vector2 Move => Gameplay ? move.ReadValue<Vector2>() : Vector2.zero;
+        public Vector2 Look => Gameplay ? look.ReadValue<Vector2>() : Vector2.zero;
         public bool LookUsesGamepad => look.activeControl?.device is Gamepad;
-        public bool JumpPressed => jump.WasPressedThisFrame();
-        public bool SprintHeld => sprint.IsPressed();
-        public bool RestartPressed => restart.WasPressedThisFrame();
-        public bool AttackPressed => attack.WasPressedThisFrame();
-        public bool InteractPressed => interact.WasPressedThisFrame();
+        public bool JumpPressed => Gameplay && jump.WasPressedThisFrame();
+        public bool SprintHeld => Gameplay && sprint.IsPressed();
+        public bool RestartPressed => Gameplay && restart.WasPressedThisFrame();
+        public bool AttackPressed => Gameplay && attack.WasPressedThisFrame();
+        public bool InteractPressed => Gameplay && interact.WasPressedThisFrame();
         public int SelectedSlotPressed
         {
             get
             {
-                float value = selectSlot.ReadValue<float>();
+                float value = Gameplay ? selectSlot.ReadValue<float>() : 0f;
                 return value > 0.5f ? Mathf.RoundToInt(value) - 1 : -1;
             }
         }

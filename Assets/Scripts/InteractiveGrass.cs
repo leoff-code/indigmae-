@@ -26,7 +26,7 @@ namespace CrystalSprint
                 Physics.Raycast(position + Vector3.up * 0.15f, Vector3.down, out RaycastHit hit, 1.4f, ~0, QueryTriggerInteraction.Ignore))
             {
                 SurfaceMarker surface = hit.collider.GetComponentInParent<SurfaceMarker>();
-                IsInteractingWithGrass = surface != null && surface.Type == SurfaceType.Grass;
+                IsInteractingWithGrass = surface != null && surface.Type == SurfaceType.Grass && IslandCoast.Progress(position.x,position.z)<.25f;
                 if (IsInteractingWithGrass)
                 {
                     Shader.SetGlobalVector(InteractorId, new Vector4(position.x, hit.point.y, position.z, interactionRadius));

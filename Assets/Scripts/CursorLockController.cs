@@ -21,6 +21,7 @@ namespace CrystalSprint
 
         private void ProcessInput(bool escapePressed, bool mouseClickPressed)
         {
+            if (MusicMenu.IsOpen) { ReleaseCursor(); return; }
             if (escapePressed)
             {
                 ReleaseCursor();
@@ -45,6 +46,7 @@ namespace CrystalSprint
 
         public void LockCursor()
         {
+            if (MusicMenu.IsOpen) { ReleaseCursor(); return; }
             IsLocked = true;
             JustLockedThisFrame = true;
             Cursor.lockState = CursorLockMode.Locked;

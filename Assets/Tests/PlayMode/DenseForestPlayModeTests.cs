@@ -19,7 +19,7 @@ namespace CrystalSprintTests
         }
 
         [UnityTest]
-        public IEnumerator ExpandedTerrainPreservesPondAndHasContinuousSteepBoundary()
+        public IEnumerator ExpandedTerrainPreservesCentralForestAndHasContinuousSlopingCoast()
         {
             MeshCollider ground = GameObject.Find("Ground").GetComponent<MeshCollider>();
             float areaRatio = ground.bounds.size.x * ground.bounds.size.z / (96f * 96f);
@@ -29,17 +29,19 @@ namespace CrystalSprintTests
             Vector3[] previous = old.vertices, expanded = ground.sharedMesh.vertices;
             for (int z = 0; z < 65; z++)
             for (int x = 0; x < 65; x++)
-                Assert.That(Vector3.Distance(previous[z * 65 + x], expanded[(z + 13) * 91 + x + 13]), Is.LessThan(.001f), "Original terrain/pond changed.");
+                if(new Vector2(previous[z*65+x].x,previous[z*65+x].z).magnitude<=55)
+                    Assert.That(Vector3.Distance(previous[z * 65 + x], expanded[(z + 13) * 91 + x + 13]), Is.LessThan(.001f), "Protected forest/pond changed.");
             #endif
-            MeshCollider mountain = GameObject.Find("Continuous Mountain Terrain").GetComponent<MeshCollider>();
+            MeshCollider coast = GameObject.Find("Connected Beach and Seabed").GetComponent<MeshCollider>();
             for (int angle = 0; angle < 360; angle += 15)
             {
                 Vector3 outward = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
                 foreach (float radius in new[] { 59f, 65f, 73f, 77f })
                 {
                     Vector3 point = outward * radius + Vector3.up * 50f;
-                    Assert.That(mountain.Raycast(new Ray(point, Vector3.down), out RaycastHit hit, 80f), Is.True, "Gap in boundary at " + angle);
-                    if (radius == 77f) Assert.That(Vector3.Angle(hit.normal, Vector3.up), Is.GreaterThan(52f), "Outer mountain is an escape ramp.");
+                    Ray ray=new Ray(point,Vector3.down);
+                    Assert.That(ground.Raycast(ray,out RaycastHit hit,80f)||coast.Raycast(ray,out hit,80f),Is.True,"Gap in connected coast at "+angle);
+                    Assert.That(Vector3.Angle(hit.normal,Vector3.up),Is.LessThan(28f),"Beach is an impassable cliff.");
                 }
             }
             PlayerController player = Object.FindAnyObjectByType<PlayerController>();
@@ -64,13 +66,15 @@ namespace CrystalSprintTests
                 Assert.That(tree.SourcePrefab, Does.StartWith(ForestWorld.Kit));
                 Vector2 p = new(tree.transform.position.x, tree.transform.position.z);
                 Assert.That(ForestWorld.PathDistance(p), Is.GreaterThanOrEqualTo(4.5f));
-                Assert.That(tree.GetComponentsInChildren<Collider>().Count(c => c.enabled), Is.EqualTo(1));
+                Assert.That(tree.GetComponents<CapsuleCollider>().Count(c => c.enabled), Is.EqualTo(1));
+                Assert.That(tree.GetComponentsInChildren<TreeHitSurface>().Length, Is.EqualTo(1));
+                Assert.That(tree.GetComponentInChildren<TreeHitSurface>().GetComponent<MeshCollider>().enabled, Is.True);
                 Assert.That(tree.GetComponent<LODGroup>().GetLODs().Length, Is.EqualTo(3));
             }
             foreach (EnvironmentAssetInstance bush in bushes)
                 Assert.That(bush.GetComponentsInChildren<Collider>().All(c => !c.enabled), Is.True, "Bush blocks walking.");
             InstancedForestGrass grass = Object.FindAnyObjectByType<InstancedForestGrass>();
-            Assert.That(grass.InstanceCount, Is.GreaterThan(24000));
+            Assert.That(grass.InstanceCount, Is.GreaterThan(22000));
             Assert.That(grass.transform.childCount, Is.Zero, "Grass uses individual GameObjects.");
             Assert.That(grass.SourceMeshes.Select(m => m.name).Distinct().Count(), Is.EqualTo(3));
             Assert.That(grass.SourceMeshes.All(m => m.vertexCount > 200), Is.True, "Kit mesh was replaced by placeholder blades.");

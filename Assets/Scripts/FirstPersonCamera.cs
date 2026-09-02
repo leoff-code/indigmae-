@@ -15,10 +15,11 @@ namespace CrystalSprint
         private CursorLockController cursorLock;
         private float yaw;
         private float pitch = 4f;
+        private AxeChopping chopping;
         public float Yaw => yaw;
         public float Pitch => pitch;
         public Vector2 LookDelta { get; private set; }
-        public Vector3 EyePosition => player == null ? transform.position : player.transform.TransformPoint(eyeOffset);
+        public Vector3 EyePosition => player == null ? transform.position : player.transform.TransformPoint(eyeOffset)-Vector3.up*(chopping!=null?chopping.DownwardLean:0);
         public PlayerController Player => player;
         public Camera ViewmodelCamera => viewmodelCamera;
 
@@ -32,6 +33,7 @@ namespace CrystalSprint
         {
             input = new GameInput();
             cursorLock = FindAnyObjectByType<CursorLockController>();
+            if(player!=null)chopping=player.GetComponent<AxeChopping>();
             if (player != null) yaw = player.transform.eulerAngles.y;
             ApplyRotation();
         }

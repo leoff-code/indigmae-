@@ -50,6 +50,7 @@ namespace CrystalSprint
 
         private void Update()
         {
+            if (MusicMenu.IsOpen || Time.timeScale <= 0) return;
             UpdateGrounding();
             Vector2 moveInput = useTestInput ? testMove : input.Move;
             bool jumpPressed = useTestInput ? ConsumeTestJump() : input.JumpPressed;

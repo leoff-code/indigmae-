@@ -27,6 +27,14 @@ namespace CrystalSprint
 
         public bool ContainsWater(Vector3 position)
         {
+            // The new sea also has low terrain. Keep the existing pond interaction strictly
+            // on its original water mesh; no sea contact may spawn pond-height effects.
+            var renderer = GetComponentInChildren<Renderer>();
+            if (renderer != null)
+            {
+                Bounds area = renderer.bounds;
+                if (position.x < area.min.x || position.x > area.max.x || position.z < area.min.z || position.z > area.max.z) return false;
+            }
             return pondGround != null && pondGround.Raycast(new Ray(new Vector3(position.x, 10f, position.z), Vector3.down), out RaycastHit hit, 20f)
                 && hit.point.y < surfaceHeight - 0.045f;
         }

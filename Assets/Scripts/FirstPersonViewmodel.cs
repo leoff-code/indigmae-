@@ -15,6 +15,7 @@ namespace CrystalSprint
         private readonly RaycastHit[] obstructionHits = new RaycastHit[12];
         private float gait, movement, sprint, wallBlend;
         private Vector2 sway;
+        private AxeChopping chopping;
         public Transform RightWrist => rightWrist;
         public Transform LeftWrist => leftWrist;
         public Transform RightElbow => rightElbow;
@@ -34,6 +35,7 @@ namespace CrystalSprint
             view = camera; player = owner;
             equipment = owner.GetComponent<LumberjackEquipment>();
             worldAnimation = owner.GetComponent<LumberjackVisual>();
+            chopping = owner.GetComponent<AxeChopping>();
         }
 
         private void LateUpdate()
@@ -52,7 +54,9 @@ namespace CrystalSprint
             wallBlend = Mathf.Lerp(wallBlend, 1f - Mathf.InverseLerp(.35f, 1.05f, nearest), 1f - Mathf.Exp(-Time.deltaTime * 14f));
             transform.localPosition = new Vector3(Mathf.Sin(gait) * .009f * movement, Mathf.Abs(Mathf.Cos(gait)) * .009f * movement - wallBlend * .025f, -wallBlend * .10f);
             transform.localRotation = Quaternion.Euler(sway.y * .65f, sway.x * .7f, -Mathf.Sin(gait) * .8f * movement);
-            EvaluatePose(worldAnimation != null && worldAnimation.IsAttacking ? worldAnimation.AttackProgress : 0f);
+            if (chopping == null) chopping = player.GetComponent<AxeChopping>();
+            float pose = worldAnimation != null && worldAnimation.IsAttacking ? worldAnimation.AttackProgress : 0f;
+            EvaluatePose(chopping != null ? chopping.PoseProgress(pose) : pose);
         }
 
         public void EvaluatePose(float attackProgress)
